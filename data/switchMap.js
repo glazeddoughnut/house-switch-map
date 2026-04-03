@@ -271,21 +271,15 @@ export const switchMap = [
         toggles: [
           {
             label: "Left",
-            controls: "??",
-            details: "",
-            circuit: "garage-unknown-left-by-pedestrian-door"
-          },
-          {
-            label: "Middle",
-            controls: "??",
-            details: "",
-            circuit: "garage-unknown-middle-by-pedestrian-door"
+            controls: "Garage exterior flood light",
+            details: "Motion-detector flood light outside the garage.",
+            circuit: "garage-exterior-flood-light"
           },
           {
             label: "Right",
-            controls: "??",
-            details: "",
-            circuit: "garage-unknown-right-by-pedestrian-door"
+            controls: "Garage lights",
+            details: "Garage lights.",
+            circuit: "garage-lights"
           }
         ]
       }

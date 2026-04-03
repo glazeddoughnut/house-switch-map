@@ -1,5 +1,6 @@
 import { switchMap } from "./data/switchMap.js";
 import { floorPlans } from "./data/floorPlans.js";
+import { getBreakerForCircuit } from "./data/dataUtils.js";
 
 const content = document.getElementById("content");
 const summaryPill = document.getElementById("summaryPill");
@@ -106,7 +107,7 @@ function renderHotspots(filteredRooms) {
                     (panel.toggles || []).some((toggle) => toggle.circuit === activeCircuit)
                 )
             );
-            
+
             return `
         <button
           class="room-hotspot ${isActive ? "active" : ""} ${isVisible ? "" : "hidden-by-filter"} ${isSelected ? "selected-for-edit" : ""} ${isSmall ? "small" : ""} ${roomHasActiveCircuit ? "active-circuit" : ""}"
@@ -229,7 +230,11 @@ function renderRoomContent(room) {
             );
 
             const isActiveCircuit = !!toggle.circuit && activeCircuit === toggle.circuit;
-
+            const breaker = getBreakerForCircuit(toggle.circuit);
+            const breakerHtml = breaker
+            ? `<div class="toggle-breaker">Breaker ${breaker.slots.join("-")}: ${breaker.label}</div>`
+            : `<div class="toggle-breaker unmapped">Breaker not mapped yet</div>`;
+            
             const linkedHtml = linkedToggles.length
                 ? `
           <div class="linked-toggles">
@@ -281,6 +286,7 @@ function renderRoomContent(room) {
             
           </div>
           <p>${toggle.details || ""}</p>
+          ${breakerHtml}
           ${isActiveCircuit ? linkedHtml : ""}
         </div>
       `;
