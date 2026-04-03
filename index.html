@@ -31,24 +31,34 @@
         </div>
 
         <div class="floorplan-wrap">
-          <div class="floor-toggle" role="tablist" aria-label="Select floor">
-            <button id="floorDownstairsBtn" class="floor-toggle-button active" type="button">
-              Main Floor
-            </button>
-            <button id="floorUpstairsBtn" class="floor-toggle-button" type="button">
-              Upstairs
-            </button>
+          <div class="floorplan-toolbar">
+            <div class="floor-toggle" role="tablist" aria-label="Select floor">
+              <button id="floorDownstairsBtn" class="floor-toggle-button active" type="button">
+                Main Floor
+              </button>
+              <button id="floorUpstairsBtn" class="floor-toggle-button" type="button">
+                Upstairs
+              </button>
+            </div>
+
+            <div class="debug-tools">
+              <button id="debugToggleBtn" class="debug-button" type="button">
+                Debug: Off
+              </button>
+              <button id="copyHotspotBtn" class="debug-button" type="button" disabled>
+                Copy Selected JSON
+              </button>
+            </div>
+          </div>
+
+          <div id="debugPanel" class="debug-panel" hidden>
+            <strong id="debugRoomName">No hotspot selected</strong>
+            <div id="debugCoords">Click a hotspot, then use arrow keys to move it. Hold Shift to resize.</div>
           </div>
 
           <div class="floorplan-image-wrap">
             <img id="floorplanImage" src="images/main-floorplan.webp" alt="Main floor plan" class="floorplan-image" />
             <div id="hotspotLayer" class="hotspot-layer"></div>
-          </div>
-
-          <div class="legend">
-            <span class="legend-chip"><span class="swatch"></span> Room</span>
-            <span class="legend-chip"><span class="swatch active"></span> Selected room</span>
-            <span class="legend-chip">Hotspots are approximate and easy to tweak</span>
           </div>
         </div>
       </section>

@@ -220,6 +220,58 @@ h1 {
   height: auto;
 }
 
+.floorplan-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.debug-tools {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.debug-button {
+  border: 1px solid var(--border);
+  background: #f8fafc;
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.debug-button:hover,
+.debug-button:focus-visible {
+  background: #e5edff;
+  color: #1d4ed8;
+  outline: none;
+}
+
+.debug-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.debug-panel {
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #f8fafc;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.room-hotspot.selected-for-edit {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.35);
+}
+
 .hotspot-layer {
   position: absolute;
   inset: 0;
@@ -254,16 +306,27 @@ h1 {
 
 .room-hotspot-label {
   position: absolute;
-  left: 8px;
-  top: 6px;
-  font-size: 0.8rem;
+  left: 4px;
+  top: 4px;
+  font-size: 0.7rem;
   font-weight: 700;
   color: #1d4ed8;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.9);
   padding: 2px 6px;
   border-radius: 999px;
-  line-height: 1.2;
+  line-height: 1.1;
   pointer-events: none;
+
+  /* NEW: keep it from exploding 
+  max-width: calc(100% - 12px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;*/
+}
+
+.room-hotspot.small .room-hotspot-label {
+  font-size: 0.6rem;
+  padding: 1px 4px;
 }
 
 .legend {
