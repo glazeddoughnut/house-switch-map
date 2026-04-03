@@ -1,263 +1,5 @@
-const switchMap = [
-    {
-        room: "Master Bedroom",
-        note: "Main bedroom lighting and switched outlets.",
-        switches: [
-            {
-                label: "Left switch by hall door",
-                controls: "Bedside outlet",
-                details: "Controls the switched outlet on one side of the room."
-            },
-            {
-                label: "Right switch by hall door",
-                controls: "Ceiling fan light",
-                details: "Light only. Fan speed uses pull chain or remote."
-            }
-        ]
-    },
-    {
-        room: "Kitchen",
-        note: "Lighting and switched outlets in the kitchen.",
-        switches: [
-            {
-                label: "Left switch by garage door",
-                controls: "Sink light",
-                details: "Pendant or fixture over the sink."
-            },
-            {
-                label: "Right switch by garage door",
-                controls: "Under-cabinet lights",
-                details: "All under-cabinet lighting on one circuit."
-            }
-        ]
-    },
-    {
-        room: "Dining Room",
-        note: "Dining lighting near the kitchen.",
-        switches: [
-            {
-                label: "Dimmer by opening",
-                controls: "Dining fixture",
-                details: "Main light for the dining area."
-            }
-        ]
-    },
-    {
-        room: "Fireplace Room",
-        note: "Family room lighting and any switched outlets.",
-        switches: [
-            {
-                label: "Left switch by entry",
-                controls: "Ceiling fan light",
-                details: "Light only, not the fan motor."
-            },
-            {
-                label: "Right switch by entry",
-                controls: "Switched outlet",
-                details: "Outlet used for a lamp."
-            }
-        ]
-    },
-    {
-        room: "Living Room",
-        note: "Front living room switches.",
-        switches: [
-            {
-                label: "Left switch by foyer",
-                controls: "Can lights",
-                details: "Main recessed lighting."
-            },
-            {
-                label: "Right switch by foyer",
-                controls: "Front lamp outlet",
-                details: "Switched outlet for a floor lamp."
-            }
-        ]
-    },
-    {
-        room: "Sunroom",
-        note: "Sunroom lighting and fan controls.",
-        switches: [
-            {
-                label: "Switch by door",
-                controls: "Sunroom light",
-                details: "Main light fixture in the sunroom."
-            }
-        ]
-    },
-    {
-        room: "Screened Porch",
-        note: "Exterior-adjacent lights and fan controls.",
-        switches: [
-            {
-                label: "Left switch by interior door",
-                controls: "Porch light",
-                details: "Main screened porch light."
-            },
-            {
-                label: "Right switch by interior door",
-                controls: "Porch fan",
-                details: "Fan or fan light, depending on fixture."
-            }
-        ]
-    },
-    {
-        room: "Garage",
-        note: "Garage and utility-adjacent controls.",
-        switches: [
-            {
-                label: "Switch by interior door",
-                controls: "Garage ceiling lights",
-                details: "Turns on both main garage fixtures."
-            }
-        ]
-    },
-    {
-        room: "Foyer",
-        note: "Entry and stair-adjacent lighting.",
-        switches: [
-            {
-                label: "Left switch by front door",
-                controls: "Foyer light",
-                details: "Main foyer fixture."
-            }
-        ]
-    },
-    {
-        room: "Guest Bedroom",
-        note: "Downstairs bedroom.",
-        switches: [
-            {
-                label: "Switch by door",
-                controls: "Ceiling light",
-                details: "Main light fixture."
-            }
-        ]
-    },
-    {
-        room: "Laundry",
-        note: "Laundry room light and utility controls.",
-        switches: [
-            {
-                label: "Switch by door",
-                controls: "Laundry light",
-                details: "Ceiling fixture in the laundry room."
-            }
-        ]
-    },
-    {
-        room: "Shelf Room",
-        note: "Storage room lighting.",
-        switches: [
-            {
-                label: "Switch by door",
-                controls: "Storage light",
-                details: "Main light for the storage room."
-            }
-        ]
-    },
-    {
-        room: "Mud Room",
-        note: "Hall near laundry and garage entry.",
-        switches: [
-            {
-                label: "3-way switch",
-                controls: "Hall light",
-                details: "Paired with another switch in the hall."
-            }
-        ]
-    },
-    {
-        room: "Hall",
-        note: "Interior hall near foyer and bath.",
-        switches: [
-            {
-                label: "3-way switch",
-                controls: "Hall light",
-                details: "Paired with another hall switch."
-            }
-        ]
-    },
-    {
-        room: "Claire's Bedroom",
-        note: "Upstairs bedroom.",
-        switches: [
-            {
-                label: "Switch by door",
-                controls: "Ceiling light",
-                details: "Main bedroom fixture."
-            }
-        ]
-    },
-    {
-        room: "Upstairs Hall",
-        note: "Second-floor hall and stair landing.",
-        switches: [
-            {
-                label: "Switch near stairs",
-                controls: "Hall light",
-                details: "Main upstairs hall light."
-            }
-        ]
-    },
-    {
-        room: "Upstairs Bath",
-        note: "Second-floor bathroom.",
-        switches: [
-            {
-                label: "Switch near door",
-                controls: "Bathroom light",
-                details: "Main upstairs bathroom light."
-            }
-        ]
-    },
-    {
-        room: "Penny's Bedroom",
-        note: "Larger upstairs bedroom.",
-        switches: [
-            {
-                label: "Switch by door",
-                controls: "Ceiling light",
-                details: "Main bedroom fixture."
-            }
-        ]
-    }
-];
-
-const floorPlans = {
-    downstairs: {
-        image: "images/main-floorplan.webp",
-        alt: "Main floor plan",
-        hotspots: [
-            { room: "Shelf Room", top: 23, left: 13.5, width: 16, height: 10.5 },
-            { room: "Master Bedroom", top: 5.5, left: 37, width: 12, height: 27.5 },
-            { room: "Laundry", top: 35, left: 40, width: 5, height: 7 },
-            { room: "Mud Room", top: 35.5, left: 45, width: 4.5, height: 12.5 },
-            { room: "Hall", top: 42.5, left: 50.5, width: 3.5, height: 19 },
-            { room: "Garage", top: 36, left: 13.5, width: 25.5, height: 35.5 },
-            { room: "Guest Bedroom", top: 62, left: 37.5, width: 12, height: 17.5 },
-            { room: "Foyer", top: 62.5, left: 50, width: 9, height: 17 },
-
-            { room: "Kitchen", top: 23.5, left: 50.5, width: 15, height: 17 },
-            { room: "Dining Room", top: 23.5, left: 66, width: 9, height: 17 },
-            { room: "Fireplace Room", top: 42.5, left: 60, width: 15, height: 16 },
-            { room: "Living Room", top: 60.5, left: 60, width: 15, height: 21.5 },
-            { room: "Sunroom", top: 61.5, left: 76.5, width: 10, height: 20 },
-            { room: "Screened Porch", top: 23.5, left: 76.5, width: 10, height: 36 }
-        ]
-    },
-
-    upstairs: {
-        image: "images/upstairs-floorplan.webp",
-        alt: "Upstairs floor plan",
-        hotspots: [
-            { room: "Claire's Bedroom", top: 4, left: 45, width: 20, height: 19.5 },
-            { room: "Upstairs Hall", top: 23, left: 35.5, width: 15, height: 11.5 },
-            { room: "Upstairs Bath", top: 25.5, left: 51.5, width: 10.5, height: 18.5 },
-            { room: "Penny's Bedroom", top: 46, left: 45.5, width: 19, height: 35.5 }
-        ]
-    }
-};
+import { switchMap } from "./data/switchMap.js";
+import { floorPlans } from "./data/floorPlans.js";
 
 const content = document.getElementById("content");
 const summaryPill = document.getElementById("summaryPill");
@@ -274,6 +16,7 @@ const debugCoords = document.getElementById("debugCoords");
 
 let activeFloor = "downstairs";
 let activeRoom = "Primary Bedroom";
+let activeCircuit = null;
 let searchTerm = "";
 let debugMode = false;
 let selectedHotspotRoom = null;
@@ -317,15 +60,28 @@ function getFilteredRooms() {
                 normalize(room.room).includes(searchTerm) ||
                 normalize(room.note).includes(searchTerm);
 
-            const matchingSwitches = room.switches.filter((sw) => {
-                return [sw.label, sw.controls, sw.details].some((field) =>
-                    normalize(field).includes(searchTerm)
-                );
-            });
+            const matchingPanels = (room.panels || [])
+                .map((panel) => {
+                    const panelMatches = normalize(panel.label).includes(searchTerm);
+
+                    const matchingToggles = panel.toggles.filter((toggle) => {
+                        return [toggle.label, toggle.controls, toggle.details].some((field) =>
+                            normalize(field).includes(searchTerm)
+                        );
+                    });
+
+                    if (panelMatches) return panel;
+                    if (matchingToggles.length) {
+                        return { ...panel, toggles: matchingToggles };
+                    }
+
+                    return null;
+                })
+                .filter(Boolean);
 
             if (roomMatches) return room;
-            if (matchingSwitches.length) {
-                return { ...room, switches: matchingSwitches };
+            if (matchingPanels.length) {
+                return { ...room, panels: matchingPanels };
             }
 
             return null;
@@ -336,17 +92,24 @@ function getFilteredRooms() {
 function renderHotspots(filteredRooms) {
     const visibleRooms = new Set(filteredRooms.map((room) => room.room));
 
+
     hotspotLayer.innerHTML = getCurrentHotspots()
         .map((hotspot) => {
             const isActive = hotspot.room === activeRoom;
             const isVisible = visibleRooms.has(hotspot.room);
             const isSelected = hotspot.room === selectedHotspotRoom;
             //const showLabel = hotspot.width > 10 && hotspot.height > 8; 
-            const isSmall = hotspot.width < 10 || hotspot.height < 8;           
-
+            const isSmall = hotspot.width < 10 || hotspot.height < 8;
+            const roomHasActiveCircuit = activeCircuit && switchMap.some((room) =>
+                room.room === hotspot.room &&
+                (room.panels || []).some((panel) =>
+                    (panel.toggles || []).some((toggle) => toggle.circuit === activeCircuit)
+                )
+            );
+            
             return `
         <button
-          class="room-hotspot ${isActive ? "active" : ""} ${isVisible ? "" : "hidden-by-filter"} ${isSelected ? "selected-for-edit" : ""} ${isSmall ? "small" : ""}"
+          class="room-hotspot ${isActive ? "active" : ""} ${isVisible ? "" : "hidden-by-filter"} ${isSelected ? "selected-for-edit" : ""} ${isSmall ? "small" : ""} ${roomHasActiveCircuit ? "active-circuit" : ""}"
           style="
             top: ${hotspot.top}%;
             left: ${hotspot.left}%;
@@ -388,6 +151,54 @@ function renderHotspots(filteredRooms) {
     });
 }
 
+function getAllToggles() {
+    return switchMap.flatMap((room) =>
+        (room.panels || []).flatMap((panel) =>
+            (panel.toggles || []).map((toggle) => ({
+                room: room.room,
+                roomNote: room.note,
+                panelLabel: panel.label,
+                ...toggle
+            }))
+        )
+    );
+}
+
+function getLinkedToggles(circuit, currentRoom, currentPanelLabel, currentToggleLabel) {
+    if (!circuit) return [];
+
+    return getAllToggles().filter((toggle) => {
+        return (
+            toggle.circuit === circuit &&
+            !(
+                toggle.room === currentRoom &&
+                toggle.panelLabel === currentPanelLabel &&
+                toggle.label === currentToggleLabel
+            )
+        );
+    });
+}
+
+function setActiveCircuit(circuit) {
+    activeCircuit = activeCircuit === circuit ? null : circuit;
+    render();
+}
+
+function jumpToRoom(roomName, circuit = null) {
+    const downstairsRooms = new Set(floorPlans.downstairs.hotspots.map((h) => h.room));
+    const upstairsRooms = new Set(floorPlans.upstairs.hotspots.map((h) => h.room));
+
+    if (downstairsRooms.has(roomName)) {
+        activeFloor = "downstairs";
+    } else if (upstairsRooms.has(roomName)) {
+        activeFloor = "upstairs";
+    }
+
+    activeRoom = roomName;
+    activeCircuit = circuit;
+    render();
+}
+
 function renderRoomContent(room) {
     if (!room) {
         content.innerHTML = '<div class="empty-state">No matching switches found.</div>';
@@ -395,26 +206,124 @@ function renderRoomContent(room) {
         return;
     }
 
-    const cards = room.switches
-        .map((sw) => {
+    const panels = room.panels || [];
+    const totalToggles = panels.reduce((sum, panel) => sum + panel.toggles.length, 0);
+
+    const panelHtml = panels.map((panel) => {
+        const paddles = panel.toggles.map((toggle) => {
+            const isActiveCircuit = !!toggle.circuit && activeCircuit === toggle.circuit;
+
             return `
-        <article class="switch-card">
-          <div class="switch-label">${sw.label}</div>
-          <h3>${sw.controls}</h3>
-          <p>${sw.details}</p>
-        </article>
+                <div class="paddle ${isActiveCircuit ? "active-circuit" : ""}" aria-hidden="true">
+                <span class="paddle-label">${toggle.label}</span>
+                </div>
+            `;
+        }).join("");
+
+        const toggleDetails = panel.toggles.map((toggle) => {
+            const linkedToggles = getLinkedToggles(
+                toggle.circuit,
+                room.room,
+                panel.label,
+                toggle.label
+            );
+
+            const isActiveCircuit = !!toggle.circuit && activeCircuit === toggle.circuit;
+
+            const linkedHtml = linkedToggles.length
+                ? `
+          <div class="linked-toggles">
+            <div class="linked-toggles-title">
+              Also controlled from ${linkedToggles.length} other location${linkedToggles.length === 1 ? "" : "s"}
+            </div>
+            <div class="linked-toggle-list">
+              ${linkedToggles.map((linked) => `
+                <div class="linked-toggle-item">
+                  <div class="linked-toggle-meta">
+                    <strong>${linked.room}</strong> · ${linked.panelLabel} · ${linked.label}
+                  </div>
+                  <button
+                    class="link-jump-button"
+                    type="button"
+                    data-jump-room="${linked.room}"
+                    data-jump-circuit="${linked.circuit || ""}"
+                  >
+                    Jump to room
+                  </button>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        `
+                : "";
+
+            const circuitCount = getCircuitCount(toggle.circuit);
+            const badge = circuitCount > 1
+  ? `
+    <button
+      class="circuit-badge ${activeCircuit === toggle.circuit ? "active" : ""}"
+      type="button"
+      data-circuit="${toggle.circuit}"
+      title="Show linked switches"
+    >
+      ${circuitCount === 2 ? "3-way" : "multi-way"}
+    </button>
+  `
+  : "";
+
+            return `
+        <div class="panel-toggle-item ${isActiveCircuit ? "active-circuit" : ""}">
+          <div class="toggle-header">
+            <h4 class="toggle-title">
+                ${toggle.label}: ${toggle.controls}
+                ${badge}
+            </h4>
+            
+          </div>
+          <p>${toggle.details || ""}</p>
+          ${isActiveCircuit ? linkedHtml : ""}
+        </div>
       `;
-        })
-        .join("");
+        }).join("");
+
+        return `
+      <article class="switch-panel-card">
+        <div class="switch-panel-header">
+          <h3 class="switch-panel-title">${panel.label}</h3>
+          <span class="switch-panel-count">${panel.toggles.length} switch${panel.toggles.length === 1 ? "" : "es"}</span>
+        </div>
+
+        <div class="paddle-strip">
+          ${paddles}
+        </div>
+
+        <div class="panel-toggle-list">
+          ${toggleDetails}
+        </div>
+      </article>
+    `;
+    }).join("");
 
     content.innerHTML = `
     <h2 class="room-title">${room.room}</h2>
     <p class="room-note">${room.note}</p>
-    <div class="switch-grid">${cards}</div>
-    <div class="meta">${room.switches.length} switch${room.switches.length === 1 ? "" : "es"} shown</div>
+    <div class="panel-grid">${panelHtml}</div>
+    <div class="meta">${panels.length} panel${panels.length === 1 ? "" : "s"}, ${totalToggles} switch${totalToggles === 1 ? "" : "es"} shown</div>
   `;
 
-    summaryPill.textContent = `${room.switches.length} switch${room.switches.length === 1 ? "" : "es"} shown`;
+    summaryPill.textContent = `${totalToggles} switch${totalToggles === 1 ? "" : "es"} shown`;
+
+    content.querySelectorAll("[data-circuit]").forEach((button) => {
+        button.addEventListener("click", () => {
+            setActiveCircuit(button.dataset.circuit);
+        });
+    });
+
+    content.querySelectorAll("[data-jump-room]").forEach((button) => {
+        button.addEventListener("click", () => {
+            jumpToRoom(button.dataset.jumpRoom, button.dataset.jumpCircuit || null);
+        });
+    });
 }
 
 function render() {
@@ -458,6 +367,12 @@ function roundCoord(value) {
 
 function getSelectedHotspot() {
     return getCurrentHotspots().find((hotspot) => hotspot.room === selectedHotspotRoom) || null;
+}
+
+function getCircuitCount(circuit) {
+    if (!circuit) return 0;
+
+    return getAllToggles().filter(t => t.circuit === circuit).length;
 }
 
 function updateDebugUI() {

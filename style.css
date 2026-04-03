@@ -106,6 +106,198 @@ h1 {
   color: var(--muted);
   font-weight: 500;
 }
+.panel-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.switch-panel-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  background: linear-gradient(180deg, #fff 0%, #fafafa 100%);
+}
+
+.switch-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.switch-panel-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.switch-panel-count {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.paddle-strip {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.paddle {
+  width: 52px;
+  min-width: 52px;
+  height: 96px;
+  border-radius: 12px;
+  border: 2px solid #cbd5e1;
+  background: linear-gradient(180deg, #ffffff 0%, #eef2f7 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.85);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paddle::before {
+  content: "";
+  width: 70%;
+  height: 72%;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #f8fafc 0%, #e5e7eb 100%);
+  border: 1px solid #d1d5db;
+}
+
+.paddle-label {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.72rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.paddle.active-circuit {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    0 0 0 3px rgba(37, 99, 235, 0.16);
+}
+
+.paddle.active-circuit::before {
+  background: linear-gradient(180deg, #ffffff 0%, #dbeafe 100%);
+  border-color: #93c5fd;
+}
+
+.panel-toggle-list {
+  display: grid;
+  gap: 12px;
+}
+.panel-toggle-item {
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  border-radius: 10px;
+}
+
+.panel-toggle-item:first-child {
+  border-top: none;
+}
+
+.panel-toggle-item.active-circuit {
+  background: rgba(37, 99, 235, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.22);
+  padding: 10px;
+}
+
+.toggle-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.toggle-title {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.toggle-actions {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.circuit-button,
+.link-jump-button {
+  border: 1px solid var(--border);
+  background: #f8fafc;
+  color: var(--text);
+  border-radius: 999px;
+  padding: 5px 9px;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.circuit-button:hover,
+.circuit-button:focus-visible,
+.link-jump-button:hover,
+.link-jump-button:focus-visible {
+  background: #e5edff;
+  color: #1d4ed8;
+  outline: none;
+}
+
+.circuit-button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.linked-toggles {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+}
+
+.linked-toggles-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.linked-toggle-list {
+  display: grid;
+  gap: 8px;
+}
+
+.linked-toggle-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.linked-toggle-meta {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.panel-toggle-item h4 {
+  margin: 0 0 4px;
+  font-size: 0.98rem;
+}
+
+.panel-toggle-item p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
 
 .content {
   padding: 20px;
@@ -316,17 +508,16 @@ h1 {
   border-radius: 999px;
   line-height: 1.1;
   pointer-events: none;
-
-  /* NEW: keep it from exploding 
-  max-width: calc(100% - 12px);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;*/
 }
 
 .room-hotspot.small .room-hotspot-label {
   font-size: 0.6rem;
   padding: 1px 4px;
+}
+
+.room-hotspot.active-circuit {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  border-color: rgba(37, 99, 235, 0.95);
 }
 
 .legend {
@@ -358,6 +549,33 @@ h1 {
 
 .swatch.active {
   background: rgba(37, 99, 235, 0.28);
+}
+
+.circuit-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  background: var(--accent-soft);
+  color: #1d4ed8;
+
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.circuit-badge:hover,
+.circuit-badge:focus-visible {
+  background: #e5edff;
+  outline: none;
+}
+
+.circuit-badge.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
 }
 
 footer {
