@@ -5,205 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>House Switch Map</title>
-  <style>
-    :root {
-      --bg: #f6f7fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --accent: #2563eb;
-      --accent-soft: #dbeafe;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      --radius: 18px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(180deg, #f9fafb 0%, #eef2ff 100%);
-      color: var(--text);
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px;
-    }
-
-    header {
-      margin-bottom: 24px;
-    }
-
-    .hero {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      padding: 28px;
-    }
-
-    h1 {
-      margin: 0 0 8px;
-      font-size: clamp(1.9rem, 4vw, 3rem);
-      line-height: 1.05;
-    }
-
-    .subtitle {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1rem;
-      max-width: 60ch;
-    }
-
-    .controls {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .search {
-      width: 100%;
-      padding: 14px 16px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      font-size: 1rem;
-      outline: none;
-      background: #fff;
-    }
-
-    .search:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 4px var(--accent-soft);
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 24px;
-      align-items: start;
-      margin-top: 24px;
-    }
-
-    .panel {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .panel-header {
-      padding: 16px 18px;
-      border-bottom: 1px solid var(--border);
-      font-weight: 700;
-    }
-
-    .room-list {
-      display: flex;
-      flex-direction: column;
-      padding: 10px;
-      gap: 8px;
-    }
-
-    .room-button {
-      text-align: left;
-      border: none;
-      background: transparent;
-      border-radius: 12px;
-      padding: 12px 14px;
-      color: var(--text);
-      cursor: pointer;
-      font-size: 0.98rem;
-    }
-
-    .room-button:hover,
-    .room-button.active {
-      background: var(--accent-soft);
-      color: #1d4ed8;
-      font-weight: 600;
-    }
-
-    .content {
-      padding: 20px;
-    }
-
-    .room-title {
-      margin: 0 0 8px;
-      font-size: 1.6rem;
-    }
-
-    .room-note {
-      margin: 0 0 18px;
-      color: var(--muted);
-    }
-
-    .switch-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-    }
-
-    .switch-card {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 16px;
-      background: linear-gradient(180deg, #fff 0%, #fafafa 100%);
-    }
-
-    .switch-label {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: #1d4ed8;
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .switch-card h3 {
-      margin: 0 0 8px;
-      font-size: 1.05rem;
-    }
-
-    .switch-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.45;
-    }
-
-    .meta {
-      margin-top: 14px;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .empty-state {
-      padding: 28px;
-      text-align: center;
-      color: var(--muted);
-    }
-
-    footer {
-      margin-top: 20px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 800px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -212,191 +14,60 @@
       <div class="hero">
         <h1>House Switch Map</h1>
         <p class="subtitle">
-          A clean household reference for what every mystery light switch actually does.
+          Tap a room on the floor plan or search by switch, room, or fixture to find out what every mystery switch does.
         </p>
         <div class="controls">
           <input id="searchInput" class="search" type="search"
-            placeholder="Search by room, switch, or what it controls..." aria-label="Search switch map" />
+            placeholder="Search by room, switch, outlet, porch light, fan..." aria-label="Search switch map" />
         </div>
       </div>
     </header>
 
     <main class="layout">
-      <aside class="panel">
-        <div class="panel-header">Rooms</div>
-        <div id="roomList" class="room-list"></div>
-      </aside>
+      <section class="panel">
+        <div class="panel-header">
+          <span>Floor Plan</span>
+          <span class="panel-subtle">Click a room</span>
+        </div>
+
+        <div class="floorplan-wrap">
+          <div class="floor-toggle" role="tablist" aria-label="Select floor">
+            <button id="floorDownstairsBtn" class="floor-toggle-button active" type="button">
+              Main Floor
+            </button>
+            <button id="floorUpstairsBtn" class="floor-toggle-button" type="button">
+              Upstairs
+            </button>
+          </div>
+
+          <div class="floorplan-image-wrap">
+            <img id="floorplanImage" src="images/main-floorplan.webp" alt="Main floor plan" class="floorplan-image" />
+            <div id="hotspotLayer" class="hotspot-layer"></div>
+          </div>
+
+          <div class="legend">
+            <span class="legend-chip"><span class="swatch"></span> Room</span>
+            <span class="legend-chip"><span class="swatch active"></span> Selected room</span>
+            <span class="legend-chip">Hotspots are approximate and easy to tweak</span>
+          </div>
+        </div>
+      </section>
 
       <section class="panel">
+        <div class="panel-header">
+          <span>Switch Details</span>
+          <span id="summaryPill" class="panel-subtle">0 switches shown</span>
+        </div>
         <div id="content" class="content"></div>
       </section>
     </main>
 
     <footer>
-      Update the <code>switchMap</code> data in this file whenever you discover a new weird switch.
+      Edit <code>switchMap</code> and <code>roomHotspots</code> in <code>script.js</code>.
     </footer>
   </div>
 
-  <script>
-    const switchMap = [
-      {
-        room: "Entryway",
-        note: "Front door switches and nearby controls.",
-        switches: [
-          {
-            label: "Left switch",
-            controls: "Porch light",
-            details: "Turns on the exterior light by the front door.",
-          },
-          {
-            label: "Right switch",
-            controls: "Foyer light",
-            details: "Ceiling fixture in the entryway.",
-          }
-        ]
-      },
-      {
-        room: "Living Room",
-        note: "Main family room switches.",
-        switches: [
-          {
-            label: "Left switch by patio door",
-            controls: "Switched outlet behind couch",
-            details: "Outlet for floor lamp on the west wall.",
-          },
-          {
-            label: "Middle switch by patio door",
-            controls: "Ceiling fan light",
-            details: "Light only, not the fan motor.",
-          },
-          {
-            label: "Right switch by patio door",
-            controls: "Can lights",
-            details: "Four recessed lights in main seating area.",
-          }
-        ]
-      },
-      {
-        room: "Kitchen",
-        note: "Lighting and any switched outlets in the kitchen.",
-        switches: [
-          {
-            label: "Left switch by garage door",
-            controls: "Sink light",
-            details: "Pendant over sink.",
-          },
-          {
-            label: "Right switch by garage door",
-            controls: "Under-cabinet lights",
-            details: "All under-cabinet lighting on one circuit.",
-          }
-        ]
-      },
-      {
-        room: "Upstairs Hall",
-        note: "Great place for confusing 3-way switches.",
-        switches: [
-          {
-            label: "Hall switch near stairs",
-            controls: "Hall ceiling light",
-            details: "3-way switch paired with the one near bedrooms.",
-          }
-        ]
-      }
-    ];
-
-    const roomList = document.getElementById('roomList');
-    const content = document.getElementById('content');
-    const searchInput = document.getElementById('searchInput');
-
-    let activeRoom = switchMap[0]?.room || null;
-    let searchTerm = '';
-
-    function normalize(value) {
-      return value.toLowerCase().trim();
-    }
-
-    function getFilteredRooms() {
-      if (!searchTerm) return switchMap;
-
-      return switchMap
-        .map(room => {
-          const roomMatches = normalize(room.room).includes(searchTerm) || normalize(room.note).includes(searchTerm);
-          const matchingSwitches = room.switches.filter(sw => {
-            return [sw.label, sw.controls, sw.details].some(field => normalize(field).includes(searchTerm));
-          });
-
-          if (roomMatches) return room;
-          if (matchingSwitches.length) {
-            return { ...room, switches: matchingSwitches };
-          }
-          return null;
-        })
-        .filter(Boolean);
-    }
-
-    function renderRooms() {
-      const filteredRooms = getFilteredRooms();
-
-      if (!filteredRooms.length) {
-        roomList.innerHTML = '<div class="empty-state">No matching rooms.</div>';
-        content.innerHTML = '<div class="empty-state">No switches matched your search.</div>';
-        return;
-      }
-
-      if (!filteredRooms.some(room => room.room === activeRoom)) {
-        activeRoom = filteredRooms[0].room;
-      }
-
-      roomList.innerHTML = filteredRooms.map(room => `
-        <button
-          class="room-button ${room.room === activeRoom ? 'active' : ''}"
-          onclick="selectRoom('${room.room}')"
-        >
-          ${room.room}
-        </button>
-      `).join('');
-
-      const selectedRoom = filteredRooms.find(room => room.room === activeRoom);
-      renderRoomContent(selectedRoom);
-    }
-
-    function renderRoomContent(room) {
-      if (!room) {
-        content.innerHTML = '<div class="empty-state">Choose a room to view switches.</div>';
-        return;
-      }
-
-      content.innerHTML = `
-        <h2 class="room-title">${room.room}</h2>
-        <p class="room-note">${room.note}</p>
-        <div class="switch-grid">
-          ${room.switches.map(sw => `
-            <article class="switch-card">
-              <div class="switch-label">${sw.label}</div>
-              <h3>${sw.controls}</h3>
-              <p>${sw.details}</p>
-            </article>
-          `).join('')}
-        </div>
-        <div class="meta">${room.switches.length} switch${room.switches.length === 1 ? '' : 'es'} shown</div>
-      `;
-    }
-
-    function selectRoom(roomName) {
-      activeRoom = roomName;
-      renderRooms();
-    }
-
-    searchInput.addEventListener('input', (event) => {
-      searchTerm = normalize(event.target.value);
-      renderRooms();
-    });
-
-    renderRooms();
-    window.selectRoom = selectRoom;
-  </script>
-
+  <script src="script.js"></script>
 </body>
 
 </html>
