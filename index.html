@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,7 +18,9 @@
       --radius: 18px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -202,6 +205,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <header>
@@ -211,13 +215,8 @@
           A clean household reference for what every mystery light switch actually does.
         </p>
         <div class="controls">
-          <input
-            id="searchInput"
-            class="search"
-            type="search"
-            placeholder="Search by room, switch, or what it controls..."
-            aria-label="Search switch map"
-          />
+          <input id="searchInput" class="search" type="search"
+            placeholder="Search by room, switch, or what it controls..." aria-label="Search switch map" />
         </div>
       </div>
     </header>
@@ -352,7 +351,7 @@
       roomList.innerHTML = filteredRooms.map(room => `
         <button
           class="room-button ${room.room === activeRoom ? 'active' : ''}"
-          onclick="selectRoom(${JSON.stringify(room.room)})"
+          onclick="selectRoom('${room.room}')"
         >
           ${room.room}
         </button>
@@ -397,5 +396,7 @@
     renderRooms();
     window.selectRoom = selectRoom;
   </script>
+
 </body>
+
 </html>
