@@ -9,17 +9,20 @@ export const switchMap = [
           {
             label: "Left",
             controls: "Flood light",
-            details: "Motion-detector light. Not currently working."
+            details: "Motion-detector light. Not currently working.",
+            circuit: "master-bedroom-flood-light"
           },
           {
             label: "Middle",
             controls: "Overhead can lights",
-            details: "Also Alexa-controllable as 'Bedroom Lights'."
+            details: "Also Alexa-controllable as 'Bedroom Lights'.",
+            circuit: "master-bedroom-can-lights"
           },
           {
             label: "Right",
             controls: "Switched outlet in soffet",
-            details: "Outlet used for ice melt. Outlet works, but ice melt not currently working."
+            details: "Outlet used for ice melt. Outlet works, but ice melt not currently working.",
+            circuit: "master-bedroom-soffet-outlet"
           }
         ]
       },
@@ -29,17 +32,20 @@ export const switchMap = [
           {
             label: "1",
             controls: "Ceiling fan light",
-            details: "Light only."
+            details: "Light only.",
+            circuit: "master-bedroom-ceiling-fan-light"
           },
           {
             label: "2",
             controls: "Ceiling fan blades",
-            details: "Blades on/off. Fan speed uses pull chain."
+            details: "Blades on/off. Fan speed uses pull chain.",
+            circuit: "master-bedroom-ceiling-fan-motor"
           },
           {
             label: "3",
             controls: "Switched outlet over bathroom",
-            details: "Outlet used for the snail lamp."
+            details: "Outlet used for the snail lamp.",
+            circuit: "master-bedroom-bathroom-overhead-outlet"
           },
           {
             label: "4",
@@ -61,7 +67,8 @@ export const switchMap = [
           {
             label: "Left",
             controls: "Vanity light",
-            details: "Controls the vanity light."
+            details: "Controls the vanity light.",
+            circuit: "master-bath-vanity-light"
           },
           {
             label: "Middle",
@@ -72,7 +79,8 @@ export const switchMap = [
           {
             label: "Right",
             controls: "Shower light",
-            details: "Light inside the shower."
+            details: "Light inside the shower.",
+            circuit: "master-bath-shower-light"
           }
         ]
       }
@@ -80,7 +88,7 @@ export const switchMap = [
   },
   {
     room: "Kitchen",
-    note: "Lighting and switched outlets in the kitchen.",
+    note: "Lighting in the kitchen.",
     panels: [
       {
         label: "By mud room",
@@ -96,7 +104,7 @@ export const switchMap = [
             controls: "Kitchen can lights",
             details: "Overhead can lights.",
             circuit: "kitchen-can-lights"
-          },
+          }
         ]
       },
       {
@@ -113,7 +121,7 @@ export const switchMap = [
             controls: "Dining room lights",
             details: "Light over table. Also Alexa-controllable as 'Dining Room Light'.",
             circuit: "dining-room-lights"
-          },
+          }
         ]
       },
       {
@@ -122,7 +130,8 @@ export const switchMap = [
           {
             label: "Single",
             controls: "Garbage disposal",
-            details: "Controls the garbage disposal."
+            details: "Controls the garbage disposal.",
+            circuit: "kitchen-garbage-disposal"
           }
         ]
       },
@@ -132,7 +141,8 @@ export const switchMap = [
           {
             label: "Single",
             controls: "Light over sink",
-            details: "Controls the light over the sink."
+            details: "Controls the light over the sink.",
+            circuit: "kitchen-sink-light"
           }
         ]
       }
@@ -177,7 +187,8 @@ export const switchMap = [
           {
             label: "Single",
             controls: "Ceiling fan light",
-            details: "Light and fan motor. Fan speed uses pull chain."
+            details: "Light and fan motor. Fan speed uses pull chain.",
+            circuit: "fireplace-room-ceiling-fan-light"
           }
         ]
       }
@@ -186,14 +197,15 @@ export const switchMap = [
   {
     room: "Living Room",
     note: "Front living room switches.",
-    panels: [  
+    panels: [
       {
         label: "Behind TV",
         toggles: [
           {
             label: "Single",
             controls: "Ceiling fan light",
-            details: "Light and fan motor. Fan speed uses pull chain."
+            details: "Light and fan motor. Fan speed uses pull chain.",
+            circuit: "living-room-ceiling-fan-light"
           }
         ]
       },
@@ -203,7 +215,8 @@ export const switchMap = [
           {
             label: "Left",
             controls: "Dead switch",
-            details: "Currently not connected to anything."
+            details: "Currently not connected to anything.",
+            circuit: "living-room-dead-switch-by-sunroom-left"
           },
           {
             label: "Middle",
@@ -214,7 +227,8 @@ export const switchMap = [
           {
             label: "Right",
             controls: "Sunroom",
-            details: "Overhead can lights in the sunroom."
+            details: "Overhead can lights in the sunroom.",
+            circuit: "sunroom-can-lights"
           }
         ]
       }
@@ -246,18 +260,7 @@ export const switchMap = [
   {
     room: "Screened Porch",
     note: "Fan is by pull chain only.",
-    panels: [
-      // {
-      //   label: "None",
-      //   toggles: [
-      //     {
-      //       label: "None",
-      //       controls: "",
-      //       details: ""
-      //     }
-      //   ]
-      // }
-    ]
+    panels: []
   },
   {
     room: "Garage",
@@ -269,17 +272,20 @@ export const switchMap = [
           {
             label: "Left",
             controls: "??",
-            details: ""
+            details: "",
+            circuit: "garage-unknown-left-by-pedestrian-door"
           },
           {
             label: "Middle",
             controls: "??",
-            details: ""
+            details: "",
+            circuit: "garage-unknown-middle-by-pedestrian-door"
           },
           {
             label: "Right",
             controls: "??",
-            details: ""
+            details: "",
+            circuit: "garage-unknown-right-by-pedestrian-door"
           }
         ]
       }
@@ -290,7 +296,18 @@ export const switchMap = [
     note: "Entry inside front door.",
     panels: [
       {
-        label: "By front door",
+        label: "Single by front closet",
+        toggles: [
+          {
+            label: "Single",
+            controls: "Hall closet",
+            details: "Hall closet light.",
+            circuit: "hall-closet-light"
+          }
+        ]
+      },
+      {
+        label: "Triple by front door",
         toggles: [
           {
             label: "Left",
@@ -302,6 +319,7 @@ export const switchMap = [
             label: "Middle",
             controls: "Front porch",
             details: "Front porch light. Also Alexa-controllable as 'Front Porch Light'. Turns on automatically when IFTTT sees notification from Life360 that says 'arrived at Red Oaks'.",
+            circuit: "front-porch-light"
           },
           {
             label: "Right",
@@ -323,13 +341,43 @@ export const switchMap = [
           {
             label: "Middle",
             controls: "Dead switch",
-            details: "Currently not connected to anything."
+            details: "Currently not connected to anything.",
+            circuit: "foyer-dead-switch-by-stairs-middle"
           },
           {
             label: "Right",
             controls: "Foyer",
             details: "",
             circuit: "foyer-light"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    room: "Guest Bath",
+    note: "Downstairs bathroom.",
+    panels: [
+      {
+        label: "To the right over counter",
+        toggles: [
+          {
+            label: "Left",
+            controls: "Exhaust fan",
+            details: "",
+            circuit: "guest-bath-exhaust-fan"
+          },
+          {
+            label: "Middle",
+            controls: "Heat lamp",
+            details: "",
+            circuit: "guest-bath-heat-lamp"
+          },
+          {
+            label: "Right",
+            controls: "Vanity light",
+            details: "",
+            circuit: "guest-bath-vanity-light"
           }
         ]
       }
@@ -345,28 +393,24 @@ export const switchMap = [
           {
             label: "Single",
             controls: "Ceiling light",
-            details: "Main light fixture."
+            details: "Main light fixture.",
+            circuit: "guest-bedroom-ceiling-light"
+          }
+        ]
+      },
+      {
+        label: "By closet",
+        toggles: [
+          {
+            label: "Single",
+            controls: "Closet light",
+            details: "Light for the closet.",
+            circuit: "guest-bedroom-closet-light"
           }
         ]
       }
     ]
   },
-  // {
-  //   room: "Laundry",
-  //   note: "Laundry room light and utility controls.",
-  //   panels: [
-  //     {
-  //       label: "By door",
-  //       toggles: [
-  //         {
-  //           label: "Single",
-  //           controls: "Laundry light",
-  //           details: "Ceiling fixture in the laundry room."
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // },
   {
     room: "Shelf Room",
     note: "Shelf room lighting.",
@@ -377,14 +421,15 @@ export const switchMap = [
           {
             label: "Single",
             controls: "Light",
-            details: "Main light for the shelf room."
+            details: "Main light for the shelf room.",
+            circuit: "shelf-room-light"
           }
         ]
       }
     ]
   },
   {
-    room: "Mud Room",
+    room: "Mud Room and Laundry",
     note: "Hall near laundry and garage entry.",
     panels: [
       {
@@ -416,7 +461,8 @@ export const switchMap = [
           {
             label: "Left",
             controls: "Dead switch",
-            details: "Currently not connected to anything."
+            details: "Currently not connected to anything.",
+            circuit: "mud-room-laundry-dead-switch-left"
           },
           {
             label: "Right",
@@ -472,12 +518,14 @@ export const switchMap = [
           {
             label: "Left",
             controls: "Hall light",
-            details: "Overhead here"
+            details: "Overhead here",
+            circuit: "bathroom-hall-light"
           },
           {
             label: "Right",
             controls: "Bathroom light",
-            details: "Main light in the bathroom."
+            details: "First light in the bathroom, near closet.",
+            circuit: "guest-bath-bathroom-light"
           }
         ]
       }
@@ -493,7 +541,8 @@ export const switchMap = [
           {
             label: "Single",
             controls: "Ceiling light",
-            details: "Main bedroom fixture."
+            details: "Main bedroom fixture.",
+            circuit: "claires-bedroom-ceiling-light"
           }
         ]
       },
@@ -505,6 +554,17 @@ export const switchMap = [
             controls: "Back flood lights",
             details: "Exterior flood lights towards the river.",
             circuit: "river-flood-lights"
+          }
+        ]
+      },
+      {
+        label: "By closet",
+        toggles: [
+          {
+            label: "Single",
+            controls: "Closet light",
+            details: "Light for the closet.",
+            circuit: "claire-closet-light"
           }
         ]
       }
@@ -565,12 +625,14 @@ export const switchMap = [
           {
             label: "1",
             controls: "Heat lamp",
-            details: "Heat lamp."
+            details: "Heat lamp.",
+            circuit: "upstairs-bath-heat-lamp"
           },
           {
             label: "2",
             controls: "Dead switch",
-            details: "Currently not connected to anything."
+            details: "Currently not connected to anything.",
+            circuit: "upstairs-bath-dead-switch-2"
           },
           {
             label: "3",
@@ -593,12 +655,30 @@ export const switchMap = [
     note: "Larger upstairs bedroom.",
     panels: [
       {
+        label: "Inside first entry",
+        toggles: [
+          {
+            label: "Left",
+            controls: "Overhead here",
+            details: "Overhead light in first entry by linen closet.",
+            circuit: "pennys-bedroom-entry-overhead-light"
+          },
+          {
+            label: "Right",
+            controls: "Dead switch",
+            details: "Currently not connected to anything.",
+            circuit: "pennys-bedroom-entry-dead-switch-right"
+          }
+        ]
+      },
+      {
         label: "Inside main part of room",
         toggles: [
           {
             label: "Single",
             controls: "Ceiling fan and light",
-            details: "Main bedroom fixture."
+            details: "Main bedroom fixture.",
+            circuit: "pennys-bedroom-ceiling-fan-light"
           }
         ]
       },
@@ -610,6 +690,39 @@ export const switchMap = [
             controls: "Front flood lights",
             details: "Exterior flood lights on the front of the house.",
             circuit: "front-flood-lights"
+          }
+        ]
+      },
+      {
+        label: "Right of bathroom door",
+        toggles: [
+          {
+            label: "Single",
+            controls: "Dead switch",
+            details: "Currently not connected to anything.",
+            circuit: "pennys-bedroom-bathroom-door-dead-switch"
+          }
+        ]
+      },
+      {
+        label: "Right on closet wall",
+        toggles: [
+          {
+            label: "Single",
+            controls: "Closet light",
+            details: "Light for right side of closet.",
+            circuit: "pennys-bedroom-right-closet-light"
+          }
+        ]
+      },
+      {
+        label: "Left on closet wall",
+        toggles: [
+          {
+            label: "Single",
+            controls: "Closet light",
+            details: "Light for left side of closet. Currently missing a bulb.",
+            circuit: "pennys-bedroom-left-closet-light"
           }
         ]
       }
